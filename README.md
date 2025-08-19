@@ -1,7 +1,7 @@
 # 🧠 LibreMind
 
 **LibreMind** is an open-source, AI-powered mental wellness companion designed with **privacy, empathy, and extensibility** at its core.  
-It provides a soothing 3D chatbot, voice-enabled conversations, and evidence-based coping tools — accessible across Web, Android, and iOS platforms.
+It provides a soothing 3D chatbot, voice-enabled conversations, and evidence-based coping tools - accessible across Web, Android, and iOS platforms.
 
 ---
 
@@ -9,10 +9,10 @@ It provides a soothing 3D chatbot, voice-enabled conversations, and evidence-bas
 
 Mental health support should be:
 
-- ✅ **Private** — No forced logins; your data stays on your device  
-- ✅ **Free** — No subscriptions, no ads  
-- ✅ **Inclusive** — Multilingual, accessible, culturally adaptive  
-- ✅ **Extensible** — Easily add new tools, plugins, or AI backends  
+- ✅ **Private** - No forced logins; your data stays on your device  
+- ✅ **Free** - No subscriptions, no ads  
+- ✅ **Inclusive** - Multilingual, accessible, culturally adaptive  
+- ✅ **Extensible** - Easily add new tools, plugins, or AI backends  
 
 LibreMind empowers users to care for their mental wellness with a friendly AI companion anytime, anywhere.
 
