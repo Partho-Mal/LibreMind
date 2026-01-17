@@ -239,29 +239,66 @@ npm run build
 ## 10. System Design Diagram
 
 ```mermaid
-flowchart LR
-    User -->|Message| Frontend
-    Frontend -->|HTTP| BackendAPI
+flowchart TD
+    %% Actors
+    User([User/Student])
+    Therapist([Therapist/Counselor])
+    SysAdmin([System Admin])
 
-    BackendAPI --> SessionService
-    SessionService --> Redis
+    %% Frontend Layer
+    subgraph ClientSide [Frontend Layer]
+        UI[Web/Mobile App]
+    end
 
-    BackendAPI --> RiskService
-    RiskService --> EscalationPlan
-    EscalationPlan --> Supabase
+    %% Backend Layer
+    subgraph Backend [Backend Services]
+        Gateway[API Gateway]
+        Auth[Auth Middleware]
+        
+        %% Service Modules
+        SessionMgr[Session Service]
+        RiskEng[Risk Engine]
+        LLMOrch[LLM Orchestrator]
+        Analytics[Analytics Service]
+    end
 
-    BackendAPI --> LLMService
-    LLMService --> LLMProvider
+    %% Infrastructure Layer
+    subgraph Infra [Data & Infrastructure]
+        Redis[(Redis: Cache & PubSub)]
+        Queue[Msg Queue / Worker]
+        Supabase[(Supabase: Auth & DB)]
+        LLMPro[LLM Provider]
+    end
 
-    BackendAPI --> CacheService
-    CacheService --> Redis
+    %% Flows
+    User --> UI
+    Therapist --> UI
+    SysAdmin --> UI
 
-    BackendAPI --> Logger
-    Logger --> Logs
+    UI -->|HTTPS / WSS| Gateway
+    Gateway --> Auth
+    Auth -.->|Verify Token| Supabase
 
-    Admin -->|Dashboard| Frontend
-    Frontend -->|Admin APIs| BackendAPI
-    BackendAPI --> Supabase
+    %% Real-time Chat Path
+    Gateway --> SessionMgr
+    SessionMgr <--> Redis
+    Gateway --> LLMOrch
+    LLMOrch --> LLMPro
+
+    %% Async Storage & Analytics (The "Real Storage" fix)
+    Gateway -->|Enqueue Event| Queue
+    Queue -->|Persist Chat| Supabase
+    Queue -->|Process Insights| Analytics
+    Analytics -->|Update Dashboard| Supabase
+
+    %% Risk Handling
+    Gateway --> RiskEng
+    RiskEng -->|Flag Crisis| Supabase
+    RiskEng -.->|Urgent Alert| Therapist
+
+    %% Therapist Access
+    Therapist -.->|View Patient Data| Gateway
+    Gateway -.->|Fetch History & Analytics| Supabase
 ```
 
 ---
