@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# Byte compiled
+*.py[cod]
+*$py.class
+
+# Cache and tooling
+.cache/
+.mypy_cache/
+.pytest_cache/
+coverage.xml
+htmlcov/
+
+# Editors
+.vscode/
+.idea/
+
+# Supabase or cloud config files
+supabase/config.toml
+supabase/.temp/
+
+# Redis dumps if any
+dump.rdb
+
+# Docker
+docker-compose.override.yml
+*.pid
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build and packaging
+build/
+dist/
+*.egg-info/
