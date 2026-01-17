@@ -16,15 +16,16 @@ All contributions must adhere to the following core tenets. Code violations in t
 
 Ensure your local environment meets the following specifications:
 
-* **Language Runtime:** Go 1.21+ or Python 3.10+
+* **Language Runtime:** Python 3.10+
 * **Containerization:** Docker Engine 24.0+
 * **Data Store:** Redis 7.0+, Supabase (local CLI or cloud instance)
 
 ### Local Deployment
 
-1.  **Clone the repository:**
+1.  **Fork and Clone:**
+    Fork the repository to your GitHub account. Clone your forked instance locally:
     ```bash
-    git clone [https://github.com/Partho-Mal/LibreMind.git](https://github.com/Partho-Mal/LibreMind.git)
+    git clone [https://github.com/YOUR-USERNAME/LibreMind.git](https://github.com/YOUR-USERNAME/LibreMind.git)
     cd libremind
     ```
 
@@ -61,15 +62,21 @@ Ensure your local environment meets the following specifications:
     * `perf`: A code change that improves performance
     * `refactor`: A code change that neither fixes a bug nor adds a feature
 
-3.  **Pull Request:** Push your branch and open a Pull Request. Ensure all CI pipeline checks pass before requesting review.
+3.  **Pull Request:** Push your branch and open a Pull Request against the upstream `main` branch. Ensure all CI pipeline checks pass before requesting review.
 
 ## Code Style and Linting
 
 Code consistency is enforced via CI pipelines. Run the following locally before submission:
 
-* **Backend (Go):** Code must be formatted with `gofmt` and pass `golangci-lint`.
-* **Backend (Python):** Code must follow PEP 8 and be formatted with `black`.
+* **Backend:** Code must follow PEP 8 standards and be formatted using `black`.
 * **Frontend:** Ensure ESLint configurations are satisfied.
+
+## Recognition
+
+We maintain a registry of all project contributors in `CONTRIBUTORS.md`.
+
+* **New Contributors:** Upon the merger of your first Pull Request, you are encouraged to append your details to the `CONTRIBUTORS.md` file in a subsequent commit or as part of the initial PR.
+* **Scope:** We recognize code contributions, documentation improvements, design assets, and significant issue triage.
 
 ## Code of Conduct
 
