@@ -1,11 +1,17 @@
-import React from 'react'
+import HeroSection from "@/sections/HeroSection";
+import FeaturesSection from "@/sections/FeaturesSection";
+import TestimonialSection from "@/sections/TestimonialSection";
+import CTASection from "@/sections/CTASection";
+// import ContactSection from "@/sections/ContactSection";
 
-const page = () => {
+export default function HomePage() {
   return (
-    <div>
-      <h1 className='text-3xl underline'>welcome to libramind </h1>
+    <div className="flex flex-col">
+      <HeroSection />
+      <FeaturesSection />
+      <TestimonialSection />
+      <CTASection />
+      {/* <ContactSection /> */}
     </div>
-  )
+  );
 }
-
-export default page
