@@ -30,7 +30,7 @@ export default function CTASection() {
             <h2
               className="
                 text-2xl font-semibold leading-tight
-                md:text-[46px] md:leading-[3.5rem]
+                md:text-[46px] md:leading-14
                 bg-linear-to-r from-white to-green-400
                 text-transparent bg-clip-text
               "
