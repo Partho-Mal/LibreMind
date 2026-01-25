@@ -80,7 +80,7 @@ export default function TestimonialSection() {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="w-full overflow-hidden bg-linear-to-b from-black to-gray-950 px-6 py-24">
+    <section id="testimonials" className="w-full overflow-hidden bg-linear-to-b from-black to-gray-950 px-6 py-2">
       <div className="mx-auto max-w-6xl">
         
         {/* Section heading */}

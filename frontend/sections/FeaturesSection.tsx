@@ -4,7 +4,7 @@ export default function FeaturesSection() {
   return (
     <section
       id="features"
-      className="w-full bg-linear-to-b from-gray-950 to-black px-6 py-24"
+      className="w-full bg-linear-to-b from-gray-950 to-black px-6 py-14"
     >
       <div className="mx-auto max-w-6xl">
 
