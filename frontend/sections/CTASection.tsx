@@ -5,7 +5,7 @@ export default function CTASection() {
     <section className="w-full px-4 py-14 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-5xl">
 
-        {/* ================= CTA CARD ================= */}
+   
         <div
           className="
             relative overflow-hidden rounded-2xl
@@ -19,12 +19,12 @@ export default function CTASection() {
             backdrop-blur-sm
           "
         >
-          {/* Background glow */}
+
           <div className="pointer-events-none absolute inset-0 opacity-20">
             <div className="absolute left-1/4 top-1/4 h-40 w-40 rounded-full bg-green-500/30 blur-3xl" />
           </div>
 
-          {/* ================= TEXT ================= */}
+         
           <div className="relative z-10 text-center md:text-left max-w-3xl">
 
             <h2
@@ -49,7 +49,7 @@ export default function CTASection() {
               with a real therapist — all in one safe, private space.
             </p>
 
-            {/* Trust indicators (desktop inline, mobile grid) */}
+
             <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-gray-300 md:flex md:gap-6">
               {[
                 "Free to start",
@@ -65,10 +65,10 @@ export default function CTASection() {
             </div>
           </div>
 
-          {/* ================= CTA BUTTON ================= */}
-          <div className="relative z-10 flex-shrink-0">
+         
+          <div className="relative z-10 shrink-0">
             <a
-              href="/signup"
+              href="/auth/signup"
               className="
                 inline-flex items-center gap-2
                 rounded-full bg-green-500
