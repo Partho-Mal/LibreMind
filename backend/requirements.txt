@@ -3,3 +3,4 @@ uvicorn
 redis
 pydantic
 python-dotenv
+supabase

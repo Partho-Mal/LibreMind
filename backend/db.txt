@@ -1,0 +1,8 @@
+escalations
+- id
+- session_id
+- content
+- risk_level
+- created_at
+
+
