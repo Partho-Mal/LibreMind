@@ -73,11 +73,12 @@ Code consistency is enforced via CI pipelines. Run the following locally before 
 
 ## Recognition
 
-We maintain a registry of all project contributors in `CONTRIBUTORS.md`.
+We maintain a registry of all project contributors in [`CONTRIBUTORS.md`](./CONTRIBUTORS.md).
 
-* **New Contributors:** Upon the merger of your first Pull Request, you are encouraged to append your details to the `CONTRIBUTORS.md` file in a subsequent commit or as part of the initial PR.
+* **New Contributors:** Upon the merger of your first Pull Request, you are encouraged to append your details to the [`CONTRIBUTORS.md`](./CONTRIBUTORS.md) file in a subsequent commit or as part of the initial PR.
 * **Scope:** We recognize code contributions, documentation improvements, design assets, and significant issue triage.
 
 ## Code of Conduct
+
 
 Maintain a professional environment. We expect all contributors to communicate with respect and technical rigor. Harassment or discriminatory behavior will not be tolerated.
