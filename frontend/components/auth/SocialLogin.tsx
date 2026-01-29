@@ -30,12 +30,12 @@ export default function SocialLogin() {
   return (
     <div className="mt-6">
       <div className="relative">
-        <div className="absolute inset-0 flex items-center">
+        {/* <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-white/10" />
-        </div>
-        <div className="relative flex justify-center text-sm">
+        </div> */}
+        {/* <div className="relative flex justify-center text-sm">
           <span className="bg-transparent px-2 text-gray-400">Or continue with</span>
-        </div>
+        </div> */}
       </div>
 
       <button
