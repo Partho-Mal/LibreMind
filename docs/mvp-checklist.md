@@ -187,3 +187,28 @@
 * [ ] No refactors
 * [ ] No redesigns
 * [ ] Stability over perfection
+
+
+---
+
+# MVP Launch Checklist
+
+## Phase 1: Foundation (Current Status)
+- [x] Supabase Project Created
+- [x] SQL Schema Deployed (Users, Sessions, RLS)
+- [x] Vector Extension Enabled (`pgvector`)
+
+## Phase 2: Core Features
+- [ ] 3D Avatar rendering in Next.js (Canvas loaded)
+- [ ] Chat UI connected to Edge Function
+- [ ] "Streaming" text response implemented (for realism)
+
+## Phase 3: Intelligence
+- [ ] System Prompt refined (`llm-prompt.md`)
+- [ ] Context Injection (RAG) pipeline working
+- [ ] Safety Regex tested
+
+## Phase 4: Launch Prep
+- [ ] Legal Consent Modal (Terms of Service) on Sign-up
+- [ ] Mobile Responsiveness Test
+- [ ] Stress Test (Simulate 50 concurrent users)

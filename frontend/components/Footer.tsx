@@ -1,104 +1,70 @@
-import React from "react";
-import Link from "next/link";
+// frontend/components/Footer.tsx
+import Link from 'next/link';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const links = {
+    Product: ['Features', 'Security', 'Enterprise', 'Changelog'],
+    Company: ['Manifesto', 'Careers', 'Blog', 'Contact'],
+    Legal: ['Privacy', 'Terms', 'Cookies']
+  };
 
   return (
-    <footer className="w-full border-t border-white/10 bg-linear-to-b from-black to-gray-950 px-4 py-12 sm:px-6">
-      <div className="mx-auto max-w-7xl">
-
-        {/* ================= TOP ================= */}
-        <div className="grid gap-10 md:grid-cols-3">
-
-          {/* Brand */}
-          <div>
-            <h3 className="text-xl font-semibold text-white">
-              Libre<span className="text-green-400">Mind</span>
-            </h3>
-            <p className="mt-3 max-w-sm text-sm text-gray-400">
-              A calm, supportive space to reflect, talk, and care for your mental well-being.
+    <footer className="bg-[#050505] pt-24 pb-12 px-6 border-t border-white/5 relative z-10">
+      <div className="mx-auto max-w-[1400px]">
+        
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-12 mb-24">
+          
+          {/* Brand Column */}
+          <div className="col-span-2 md:col-span-4">
+            <Link href="/" className="text-2xl font-bold tracking-tighter text-white mb-6 block">
+              LibreMind
+            </Link>
+            <p className="text-[#888] text-sm leading-relaxed max-w-xs">
+              A 3D mental health companion designed for the modern age. 
+              Built with privacy, empathy, and silence in mind.
             </p>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h4 className="mb-3 text-sm font-semibold text-white">
-              Navigate
-            </h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <Link href="/" className="transition hover:text-green-400">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="#features" className="transition hover:text-green-400">
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-it-works" className="transition hover:text-green-400">
-                  How It Works
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="transition hover:text-green-400">
-                  Pricing
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="mb-3 text-sm font-semibold text-white">
-              Resources
-            </h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <Link href="/help" className="hover:text-green-400 transition">
-                  Help Center
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="hover:text-green-400 transition">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-green-400 transition">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        {/* Divider */}
-        <div className="my-8 border-t border-white/10" />
-
-        {/* Bottom */}
-        <div className="flex flex-col items-center justify-between gap-4 text-sm text-gray-500 md:flex-row">
-          <p>© {currentYear} LibreMind. All rights reserved.</p>
-
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-green-400 transition">
-              Privacy
-            </Link>
-            <Link href="/terms" className="hover:text-green-400 transition">
-              Terms
-            </Link>
+          {/* Links Grid */}
+          <div className="col-span-2 md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
+            {Object.entries(links).map(([category, items]) => (
+              <div key={category}>
+                <h4 className="text-white font-medium mb-6">{category}</h4>
+                <ul className="space-y-4">
+                  {items.map((item) => (
+                    <li key={item}>
+                      <Link 
+                        href="#" 
+                        // Hover color fixed to explicit Matcha hex
+                        className="text-[#888] hover:text-[#dbf26e] text-sm transition-colors"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Disclaimer */}
-        <p className="mt-6 max-w-4xl text-xs leading-relaxed text-gray-500">
-          LibreMind is not a replacement for professional mental health care.
-          If you are in immediate danger, please contact your local emergency services
-          or a trusted crisis helpline.
-        </p>
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
+          <p className="text-xs text-[#666]">
+            © {new Date().getFullYear()} LibreMind Inc. Mumbai.
+          </p>
+          <div className="flex gap-4">
+            {['Twitter', 'Instagram', 'LinkedIn'].map(social => (
+              <a 
+                key={social} 
+                href="#" 
+                className="text-xs text-[#666] hover:text-white uppercase tracking-wider transition-colors"
+              >
+                {social}
+              </a>
+            ))}
+          </div>
+        </div>
 
       </div>
     </footer>

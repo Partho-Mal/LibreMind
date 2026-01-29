@@ -2,7 +2,7 @@ export const routes = {
   HOME: "/",
   LOGIN: "/auth/login",
   SIGNUP: "/auth/signup",
-  ONBOARDING: "/onboarding",
+  ONBOARDING: "/dashboard/onboarding",
   AVATAR: "/avatar",
   DASHBOARD: "/dashboard",
   CHAT: "/chat",

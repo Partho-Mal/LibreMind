@@ -1,14 +1,16 @@
-from supabase import create_client
+# backend/app/infra/supabase_client.py
+
+from supabase import create_client, Client
+from supabase.client import ClientOptions
 from app.core.config import SUPABASE_URL, SUPABASE_KEY
 
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase: Client = create_client(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    options=ClientOptions(
+        postgrest_client_timeout=5,
+        storage_client_timeout=5,
+        schema="public",
+    ),
+)
 
-
-def save_escalation(session_id: str, content: str, risk_level: str):
-    supabase.table("escalations").insert(
-        {
-            "session_id": session_id,
-            "content": content,
-            "risk_level": risk_level,
-        }
-    ).execute()

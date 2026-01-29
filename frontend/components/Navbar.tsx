@@ -1,141 +1,65 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { routes } from "@/constants/routes";
+// frontend/components/Navbar.tsx
+'use client';
+import Link from 'next/link';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      setScrolled(currentScrollY > 20);
-
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
-
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  const navItems = [
+    { name: 'Features', href: '/features' },
+    { name: 'Method', href: '/method' },
+    { name: 'Privacy', href: '/privacy' },
+  ];
 
   return (
-    <header
-      className={`fixed top-4 left-1/2 z-50 w-[92%] max-w-6xl -translate-x-1/2 transition-all duration-300
-        ${hidden ? "-translate-y-32 opacity-0" : "translate-y-0 opacity-100"}
-      `}
-    >
-      <nav
-        className={`flex items-center justify-between rounded-full border px-6 py-3 backdrop-blur-xl transition-all duration-300
-          ${
-            scrolled
-              ? "border-white/10 bg-black/70 shadow-lg"
-              : "border-green-500/30 bg-green-950/40"
-          }
-        `}
-      >
-     
-        <Link
-          href={routes.HOME}
-          className="text-lg font-bold tracking-wide text-white"
+    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+      {/* Floating Island Container 
+          - bg-[#050505]/80: Explicit dark obsidian with opacity
+      */}
+      <nav className="flex items-center gap-2 rounded-full border border-white/10 bg-[#050505]/80 p-2 backdrop-blur-xl shadow-2xl shadow-black/50">
+        
+        {/* Logo Section */}
+        <Link 
+          href="/" 
+          className="flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 transition hover:bg-white/10"
         >
-          LIBRE
-          <span className="bg-linear-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
-            MIND
-          </span>
+          {/* Matcha Dot with Glow */}
+          <div className="h-2 w-2 rounded-full bg-[#dbf26e] shadow-[0_0_8px_#dbf26e]" />
+          <span className="text-sm font-semibold tracking-tight text-white">LibreMind</span>
         </Link>
 
-        
-        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-white/80">
-
-          <Link href={routes.HOME} className="hover:text-white transition">
-            Home
-          </Link>
-
-          <Link href="#features" className="hover:text-white transition">
-            Features
-          </Link>
-
-          <Link href="#testimonials" className="hover:text-white transition">
-            Stories
-          </Link>
-
-
-         
-
-       
-          <div className="flex items-center gap-4 pl-4 border-l border-white/10">
-
+        {/* Navigation Links - Hidden on mobile */}
+        <div className="hidden items-center px-4 sm:flex gap-6">
+          {navItems.map((item) => (
             <Link
-              href={routes.LOGIN}
-              className="text-white/60 hover:text-white transition"
+              key={item.name}
+              href={item.href}
+              className="text-xs font-medium text-[#888] transition-colors hover:text-white"
             >
-              Login
+              {item.name}
             </Link>
-
-            <Link
-              href={routes.SIGNUP}
-              className="rounded-full bg-green-500 px-5 py-2 text-sm font-semibold text-black transition hover:bg-green-400"
-            >
-              Get Started
-            </Link>
-
-          </div>
+          ))}
         </div>
 
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex items-center justify-center rounded-full border border-white/10 p-2 text-white"
-        >
-          {menuOpen ? <span className="text-xl">✕</span> : <span className="text-xl">☰</span>}
-        </button>
+        {/* Separator Line */}
+        <div className="hidden h-4 w-[1px] bg-white/10 sm:block" />
+
+        {/* Right Actions */}
+        <div className="flex items-center gap-2 pl-2">
+          <Link
+            href="/auth/login"
+            className="hidden px-3 text-xs font-medium text-white transition hover:text-[#dbf26e] sm:block"
+          >
+            Log in
+          </Link>
+          
+          <Link
+            href="/auth/signup"
+            className="rounded-full bg-[#dbf26e] px-5 py-2 text-xs font-bold text-black transition-all hover:bg-white hover:scale-105"
+          >
+            Get Started
+          </Link>
+        </div>
+
       </nav>
-
-  
-      {menuOpen && (
-        <div className="mt-3 rounded-2xl border border-white/10 bg-black/80 backdrop-blur-xl md:hidden">
-          <div className="flex flex-col gap-4 px-6 py-6 text-sm text-white/80">
-
-            <Link href={routes.HOME} onClick={() => setMenuOpen(false)}>
-              Home
-            </Link>
-
-            <Link href="#features" onClick={() => setMenuOpen(false)}>
-              Features
-            </Link>
-
-            <div className="mt-4 flex flex-col gap-3 border-t border-white/10 pt-4">
-
-              <Link
-                href={routes.LOGIN}
-                onClick={() => setMenuOpen(false)}
-                className="text-center text-white/70"
-              >
-                Login
-              </Link>
-
-              <Link
-                href={routes.SIGNUP}
-                onClick={() => setMenuOpen(false)}
-                className="rounded-full bg-green-500 px-5 py-3 text-center font-semibold text-black"
-              >
-                Get Started
-              </Link>
-
-            </div>
-          </div>
-        </div>
-      )}
-    </header>
+    </div>
   );
 }

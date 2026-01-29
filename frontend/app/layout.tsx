@@ -1,12 +1,13 @@
+// app/layout.tsx
+import { Manrope } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 
-
-export const metadata = {
-  title: "LibreMind – AI Mental Health Companion",
-  description: "An AI-powered 3D mental health chatbot to support your well-being",
-};
+const manrope = Manrope({ 
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap", 
+});
 
 export default function RootLayout({
   children,
@@ -14,13 +15,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="  bg-gray-950 text-gray-100 antialiased">
-        <Navbar />
-        <main className="min-h-screen">
+    <html lang="en" className={manrope.variable}>
+      <body className="bg-obsidian font-sans text-white antialiased selection:bg-matcha selection:text-obsidian">
+        
+        {/* The Texture Overlay */}
+        <div className="bg-noise" />
+        
+        {/* Smooth Scroll Wrapper */}
+        <SmoothScroll>
           {children}
-        </main>
-        <Footer />
+        </SmoothScroll>
+        
       </body>
     </html>
   );
