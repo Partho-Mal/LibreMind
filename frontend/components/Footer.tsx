@@ -2,10 +2,24 @@
 import Link from 'next/link';
 
 export default function Footer() {
+  // Updated structure: name + href
   const links = {
-    Product: ['Features', 'Security', 'Enterprise', 'Changelog'],
-    Company: ['Manifesto', 'Careers', 'Blog', 'Contact'],
-    Legal: ['Privacy', 'Terms', 'Cookies']
+    Product: [
+      { name: 'Features', href: '/features' },
+      { name: 'Method', href: '/method' },      // Points to "The Science" page
+      { name: 'Security', href: '/privacy' },   // Re-using privacy for security context
+      { name: 'Changelog', href: '#' },         // Placeholder
+    ],
+    Company: [
+      { name: 'About', href: '/about' },
+      { name: 'Careers', href: '#' },
+      { name: 'Contact', href: '#contact' },    // Scrolls to contact section if on home
+    ],
+    Legal: [
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Terms of Service', href: '/terms' },
+      { name: 'Medical Disclaimer', href: '/terms' }, // Important for health apps
+    ]
   };
 
   return (
@@ -32,13 +46,12 @@ export default function Footer() {
                 <h4 className="text-white font-medium mb-6">{category}</h4>
                 <ul className="space-y-4">
                   {items.map((item) => (
-                    <li key={item}>
+                    <li key={item.name}>
                       <Link 
-                        href="#" 
-                        // Hover color fixed to explicit Matcha hex
+                        href={item.href} 
                         className="text-[#888] hover:text-[#dbf26e] text-sm transition-colors"
                       >
-                        {item}
+                        {item.name}
                       </Link>
                     </li>
                   ))}
