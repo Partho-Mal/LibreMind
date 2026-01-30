@@ -1,8 +1,8 @@
+# backend/app/services/llm/openai.py
 import time
 from openai import OpenAI
 from app.services.llm.base import BaseLLM
-from app.core.config import OPENAI_API_KEY
-
+from app.core.config import settings # <--- UPDATED IMPORT
 
 class OpenAILLM(BaseLLM):
     def __init__(
@@ -12,7 +12,10 @@ class OpenAILLM(BaseLLM):
     ):
         self.model = model
         self.max_retries = max_retries
-        self.client = OpenAI(api_key=OPENAI_API_KEY)
+       
+       # FIX: Use dummy key if missing
+        api_key = settings.OPENAI_API_KEY or "dummy_key_for_tests"
+        self.client = OpenAI(api_key=api_key)
 
     def generate_reply(self, prompt: str) -> str:
         last_exc = None

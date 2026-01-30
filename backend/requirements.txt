@@ -4,3 +4,6 @@ redis
 pydantic
 python-dotenv
 supabase
+pytest 
+httpx
+pydantic-settings

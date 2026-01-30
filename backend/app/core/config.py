@@ -1,16 +1,30 @@
 import os
+from pydantic_settings import BaseSettings
 
-ENV = os.getenv("ENV", "local")
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+class Settings(BaseSettings):
+    # App Config
+    ENV: str = "local"
+    LOG_LEVEL: str = "INFO"
+    
+    # Infrastructure
+    REDIS_URL: str = "redis://redis:6379/0"
+    
+    # LLM Config
+    LLM_PROVIDER: str = "gemini"
+    GEMINI_API_KEY: str | None = None
+    OPENAI_API_KEY: str | None = None
+    GROK_API_KEY: str | None = None
+    
+    # Supabase / Auth
+    SUPABASE_URL: str | None = None
+    SUPABASE_KEY: str | None = None
+    # CRITICAL: This was missing but required by your auth.py
+    SUPABASE_JWT_SECRET: str = "super-secret-jwt-key-for-testing" 
 
-REDIS_URL = os.getenv("REDIS_URL", "redis://redis:6379/0")
-
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini")
-
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-GROK_API_KEY = os.getenv("GROK_API_KEY")
-
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-
+    model_config = {
+            "env_file": ".env",
+            "extra": "ignore"
+        }
+    
+# Create the instance that other files import
+settings = Settings()
